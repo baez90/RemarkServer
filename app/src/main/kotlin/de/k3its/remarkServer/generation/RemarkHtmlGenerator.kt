@@ -58,8 +58,6 @@ class RemarkHtmlGenerator(val markdownPath: Path, htmlTargetPath: String) {
 						}
 					}.firstOrNull()
 					if (events != null) {
-						val stringBuilder = StringBuilder()
-						Files.readAllLines(markdownPath).forEach { stringBuilder.appendln(it) }
 						regenerateHtml(Files.readAllLines(markdownPath).concat(), Files.readAllLines(stylesFilePath).concat())
 					}
 				}
