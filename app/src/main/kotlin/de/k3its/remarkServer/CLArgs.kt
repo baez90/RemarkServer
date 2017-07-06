@@ -8,8 +8,6 @@ import com.xenomachina.argparser.ArgParser
  */
 class CLArgs(parser: ArgParser) {
 
-	private val numberRegex : Regex = Regex("^\\d{4}$")
-
 	val workingDirectory by parser.storing("-w", "--workingDir", help = "Path to the working directory where index.html will be generated")
 
 	val markdownFile by parser.storing("-m", "--markdownFile", help = "Path to the markdown file which will be monitored")
