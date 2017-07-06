@@ -1,0 +1,56 @@
+group 'de.k3its'
+version '1.0-SNAPSHOT'
+
+buildscript {
+
+    ext {
+        kotlin_version = '1.1.3-2'
+        vertx_version = '3.4.2'
+        junit_version = '4.12'
+        velocity_version = '1.7'
+        kotlinArgParser_version = '2.0.3'
+        kotlin_coroutines_version = '0.16'
+        kotlin_logging_version = '1.4.5'
+    }
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+mainClassName = 'de.k3its.remarkServer.MainKt'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    compile "io.vertx:vertx-web:$vertx_version"
+    compile "org.apache.velocity:velocity:$velocity_version"
+    compile "com.xenomachina:kotlin-argparser:$kotlinArgParser_version"
+    compile "io.github.microutils:kotlin-logging:$kotlin_logging_version"
+
+    testCompile "junit:junit:$junit_version"
+}
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}

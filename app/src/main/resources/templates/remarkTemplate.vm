@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+        $stylesBody
+    </style>
+</head>
+<body>
+<textarea id="source">
+
+    $markdownBody
+
+    </textarea>
+<script src="remark-latest.min.js">
+</script>
+<script>
+    var slideshow = remark.create();
+</script>
+</body>
+</html>
