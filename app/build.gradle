@@ -2,19 +2,9 @@ group 'de.k3its'
 version '1.0-SNAPSHOT'
 
 buildscript {
-
-    ext {
-        kotlin_version = '1.1.3-2'
-        vertx_version = '3.4.2'
-        junit_version = '4.12'
-        velocity_version = '1.7'
-        kotlinArgParser_version = '2.0.3'
-        kotlin_coroutines_version = '0.16'
-        kotlin_logging_version = '1.4.5'
-    }
-
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -30,6 +20,7 @@ mainClassName = 'de.k3its.remarkServer.MainKt'
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -40,7 +31,12 @@ dependencies {
     compile "com.xenomachina:kotlin-argparser:$kotlinArgParser_version"
     compile "io.github.microutils:kotlin-logging:$kotlin_logging_version"
 
-    testCompile "junit:junit:$junit_version"
+    compile "org.apache.logging.log4j:log4j-api:2.8.2"
+    compile "org.apache.logging.log4j:log4j-core:2.8.2"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:2.8.2"
+
+    testCompile "commons-io:commons-io:$commons_io_version"
+    testCompile "io.kotlintest:kotlintest:$kotlintest_version"
 }
 
 kotlin {

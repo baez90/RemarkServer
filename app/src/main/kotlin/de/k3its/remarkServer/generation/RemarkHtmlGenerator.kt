@@ -27,7 +27,7 @@ class RemarkHtmlGenerator(val markdownPath: Path, htmlTargetPath: String) {
 		val REMARK_TEMPLATE_PATH = "/templates/remarkTemplate.vm"
 	}
 
-	private val logger : KLogger = KotlinLogging.logger{}
+	private val logger : KLogger = KotlinLogging.logger(this.javaClass.simpleName)
 	private val velocityEngine: VelocityEngine = VelocityEngine()
 	private val htmlTemplate: Template
 	private val htmlTargetFile: File
