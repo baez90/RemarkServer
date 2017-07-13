@@ -17,8 +17,8 @@ fun main(args: Array<String>) {
 
 	CLArgs(ArgParser(args, helpFormatter = DefaultHelpFormatter())).run {
 		val markdownPath = File(markdownFile).toPath()
-		setupStyles(markdownPath)
-		setupRemark(workingDirectory)
+		Setup.setupStyles(markdownPath)
+		Setup.setupRemark(workingDirectory)
 
 		val generator = RemarkHtmlGenerator(markdownPath, "${workingDirectory}/index.html")
 		generator.start()

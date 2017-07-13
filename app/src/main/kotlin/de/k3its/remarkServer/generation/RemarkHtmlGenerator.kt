@@ -1,11 +1,11 @@
 package de.k3its.remarkServer.generation
 
+import de.k3its.remarkServer.concat
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 import mu.KLogger
 import mu.KotlinLogging
-import org.apache.commons.lang.text.StrBuilder
 import org.apache.velocity.Template
 import org.apache.velocity.VelocityContext
 import org.apache.velocity.app.VelocityEngine
@@ -14,7 +14,6 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 import java.io.File
 import java.io.PrintWriter
 import java.nio.file.*
-
 
 /**
  * @author Peter Kurfer
@@ -27,7 +26,7 @@ class RemarkHtmlGenerator(val markdownPath: Path, htmlTargetPath: String) {
 		val REMARK_TEMPLATE_PATH = "/templates/remarkTemplate.vm"
 	}
 
-	private val logger : KLogger = KotlinLogging.logger(this.javaClass.simpleName)
+	private val logger: KLogger = KotlinLogging.logger(this.javaClass.simpleName)
 	private val velocityEngine: VelocityEngine = VelocityEngine()
 	private val htmlTemplate: Template
 	private val htmlTargetFile: File
@@ -81,10 +80,4 @@ class RemarkHtmlGenerator(val markdownPath: Path, htmlTargetPath: String) {
 		val watchKey = path.parent.register(watcher, java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY)
 		dirWatchKeys.add(watchKey)
 	}
-}
-
-private fun MutableList<String>.concat(): String {
-	val stringBuilder = StrBuilder()
-	this.forEach { stringBuilder.appendln(it) }
-	return stringBuilder.toString()
 }
